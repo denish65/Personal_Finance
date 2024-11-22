@@ -48,7 +48,7 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="{{ route('admin.log
                         <a class="active-menu" href="index.html"><i class="fa fa-dashboard fa-3x"></i> Dashboard</a>
                     </li>
                     <li>
-                        <a href="ui.html"><i class="fa fa-desktop fa-3x"></i> UI Elements</a>
+                        <a href="{{ route('admin.expense')}}"><i class="fa fa-desktop fa-3x"></i> Expense</a>
                     </li>
                     <li>
                         <a href="tab-panel.html"><i class="fa fa-qrcode fa-3x"></i> Tabs & Panels</a>
@@ -102,6 +102,7 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="{{ route('admin.log
         </nav>
 
         @yield('dashboard')
+        @yield('Expense')
 
         <!-- /. NAV SIDE  -->
         {{-- <div id="page-wrapper">

@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\admin\HomeController;
+use App\Http\Controllers\admin\AddExpenseControllers;
+
+
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -41,6 +44,8 @@ Route::middleware([App\Http\Middleware\CheckAdminSession::class])->group(functio
     // Admin routes that require the 'admin' session
     // Route::get('/admin/dashboard', [HomeController::class, 'dashboard'])->name('admin.dashboard');
 Route::get('/admin/dashboard', [HomeController::class, 'index'])->name('admin.dashboard');
+Route::get('/admin/expense', [AddExpenseControllers::class, 'index'])->name('admin.expense');
+
 
 
 
