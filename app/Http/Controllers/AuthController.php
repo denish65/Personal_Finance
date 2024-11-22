@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\AuthModel;
 use Illuminate\Support\Facades\Hash; 
 use Illuminate\Support\Facades\Validator; // Add this line to import the Validator facade
+use Illuminate\Support\Facades\Session;
+
 
 class AuthController extends Controller
 {
@@ -85,22 +87,20 @@ class AuthController extends Controller
             return response()->json(['errors' => $validator->errors()], 400);
         }
 
-        // Check if user exists with the provided email
+
         $user = AuthModel::where('email', $request->email)->first();
 
-        // If the user is found and the password matches
-        if ($user && Hash::check($request->password, $user->password)) {
-            // Optionally log in the user manually if needed
-            // Auth::login($user);
 
+        if ($user && Hash::check($request->password, $user->password)) {
+
+
+            Session::put("admin",$user);
             
             return redirect()->route("admin.dashboard");
-            // Return the authenticated user data
-            // return response()->json(['user' => $user, 'message' => 'Login successful.'], 200);
+
         }
 
-        // If the login fails, return an error
-        // return response()->json(['error' => 'Unauthorized'], 401);
+
         return redirect('/login');
 
     }
@@ -109,11 +109,12 @@ class AuthController extends Controller
     /**
      * Handle user logout.
      */
-    public function logout()
+    public function adminlogout()
     {
         // Log out the user
-        AuthModel::logout();
+        // AuthModel::logout();
+        Session::forget('admin');
 
-        return response()->json(['message' => 'Logout successful.'], 200);
+        return redirect('/'); 
     }
 }

@@ -27,12 +27,23 @@ Route::post('/register', [AuthController::class, 'register'])->name('register-fo
 
 Route::post('/login', [AuthController::class, 'login'])->name('admin.login');
 
+Route::get('/admin/logout', [AuthController::class, 'adminlogout'])->name('admin.logout');
 
 
 
-Route::get('/admin', [HomeController::class, 'index'])->name('admin.');
+// Route::get('/admin', [HomeController::class, 'index'])->name('admin.');
 
 
+// Route::get('/admin/dashboard', [HomeController::class, 'index'])->name('admin.dashboard');
+
+
+Route::middleware([App\Http\Middleware\CheckAdminSession::class])->group(function () {
+    // Admin routes that require the 'admin' session
+    // Route::get('/admin/dashboard', [HomeController::class, 'dashboard'])->name('admin.dashboard');
 Route::get('/admin/dashboard', [HomeController::class, 'index'])->name('admin.dashboard');
 
+
+
+    // Other admin routes
+});
 
