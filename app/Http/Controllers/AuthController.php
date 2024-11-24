@@ -90,14 +90,18 @@ class AuthController extends Controller
 
         $user = AuthModel::where('email', $request->email)->first();
 
+        //is_superadmin
+        // echo "<PRE>"; print_R($user['is_superadmin']);exit();
 
-        if ($user && Hash::check($request->password, $user->password)) {
+        if(isset($user['is_superadmin']) && $user['is_superadmin'] == '1'){
+            if ($user && Hash::check($request->password, $user->password)) {
 
 
-            Session::put("admin",$user);
-            
-            return redirect()->route("admin.dashboard");
+                Session::put("admin",$user);
+                
+                return redirect()->route("admin.dashboard");
 
+            }
         }
 
 

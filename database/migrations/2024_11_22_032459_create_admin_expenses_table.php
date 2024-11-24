@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('item_name'); // Item name
             // $table->enum('payment_for', ['personal', 'group', 'room'])->default('personal');
             $table->string('payment_for');
+            $table->string('payment_status');
             $table->timestamps();
         });
     }

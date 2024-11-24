@@ -4,6 +4,8 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <title>Free Bootstrap Admin Template : Binary Admin</title>
     <!-- BOOTSTRAP STYLES-->
     <link href="{{ asset('asset/css/bootstrap.css') }}" rel="stylesheet" />
@@ -13,8 +15,17 @@
     <link href="{{ asset('asset/js/morris/morris-0.4.3.min.css') }}" rel="stylesheet" />
     <!-- CUSTOM STYLES-->
     <link href="{{ asset('asset/css/custom.css') }}" rel="stylesheet" />
+
+    <link href="{{ asset('asset/css/style2.css') }}" rel="stylesheet" />
+
     <!-- GOOGLE FONTS-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+
+    {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"> --}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    @vite(['resources/js/app.js', 'resources/css/app.css'])
+
 </head>
 
 <body>
@@ -51,7 +62,7 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="{{ route('admin.log
                         <a href="{{ route('admin.expense')}}"><i class="fa fa-desktop fa-3x"></i> Expense</a>
                     </li>
                     <li>
-                        <a href="tab-panel.html"><i class="fa fa-qrcode fa-3x"></i> Tabs & Panels</a>
+                        <a href="{{ route("chat.room")}}"><i class="fa fa-qrcode fa-3x"></i> chat room</a>
                     </li>
                     <li>
                         <a href="chart.html"><i class="fa fa-bar-chart-o fa-3x"></i> Morris Charts</a>
@@ -103,7 +114,7 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="{{ route('admin.log
 
         @yield('dashboard')
         @yield('Expense')
-
+         @yield('chatroom')
         <!-- /. NAV SIDE  -->
         {{-- <div id="page-wrapper">
             <div id="page-inner">
@@ -155,6 +166,15 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="{{ route('admin.log
     <script src="{{ asset('asset/js/morris/morris.js') }}"></script>
     <!-- CUSTOM SCRIPTS -->
     <script src="{{ asset('asset/js/custom.js') }}"></script>
+
+    {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script> --}}
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+{{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"> --}}
+
+{{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> --}}
 
 
 </body>
