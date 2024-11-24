@@ -1,14 +1,16 @@
-<?php 
+<?php
 
-use App\Http\Controllers\ChatController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\admin\ChatController;
 
 
+Route::get('/user', function (Request $request) {
+    return $request->user();
+})->middleware('auth:sanctum');
 
-Route::get('/messages', [ChatController::class, 'fetchMessages']); // Fetch messages
-Route::post('/messages', [ChatController::class, 'sendMessage']); // Send a message
 
 Route::middleware(['auth:sanctum'])->prefix('api')->group(function () {
-    Route::get('/messages', [ChatController::class, 'fetchMessages']); // Fetch messages
-    Route::post('/messages', [ChatController::class, 'sendMessage']); // Send a message
+    Route::get('/messages', [ChatController::class, 'fetchMessages']);
+    Route::post('/messages', [ChatController::class, 'sendMessage']);
 });

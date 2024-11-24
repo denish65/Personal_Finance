@@ -62,7 +62,6 @@ Route::get('/admin/chatRoom', [ChatController::class, 'index'])->name("chat.room
 
 
 
-
     // Other admin routes
 });
 
