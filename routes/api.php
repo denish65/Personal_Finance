@@ -10,7 +10,12 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 
-Route::middleware(['auth:sanctum'])->prefix('api')->group(function () {
+// Route::middleware(['auth:sanctum'])->prefix('api')->group(function () {
     Route::get('/messages', [ChatController::class, 'fetchMessages']);
     Route::post('/messages', [ChatController::class, 'sendMessage']);
-});
+
+// Route::middleware([App\Http\Middleware\CheckAdminSession::class])->group(function () {
+
+//     Route::get('/messages', [ChatController::class, 'fetchMessages']);
+//     Route::post('/messages', [ChatController::class, 'sendMessage']);
+// });

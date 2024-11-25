@@ -12,6 +12,10 @@ class AddExpenseControllers extends Controller
 
     public function index()
     {
+
+        $session = Session('admin');
+        $session['id'];
+        
         return view('admin.Expense');
     }
 

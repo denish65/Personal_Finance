@@ -121,4 +121,17 @@ class AuthController extends Controller
 
         return redirect('/'); 
     }
+
+
+
+
+    public function getcurruntsession()
+    {
+        $session = Session('admin');
+        // dd($session['id']);
+        $data=[];
+        $data['session']=$session;
+
+        return $data; 
+    }
 }
