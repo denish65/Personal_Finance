@@ -5,6 +5,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\admin\HomeController;
 use App\Http\Controllers\admin\AddExpenseControllers;
 use App\Http\Controllers\admin\ChatController;
+use App\Http\Controllers\admin\LibraryConttoller;
+
 
 
 
@@ -53,6 +55,10 @@ Route::post('/admin/deleteExpense/{id}', [AddExpenseControllers::class, 'deleteE
 
 
 Route::get('/admin/chatRoom', [ChatController::class, 'index'])->name("chat.room"); // Fetch messages
+
+
+Route::get('/admin/library', [LibraryConttoller::class, 'index'])->name("admin.library"); // Fetch messages
+
 
 // Route::get('/admin/messages', [ChatController::class, 'fetchMessages']); // Fetch messages
 // Route::post('/admin/messages', [ChatController::class, 'sendMessage']); // Send a message

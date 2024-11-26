@@ -17,6 +17,7 @@ const app = createApp({});
 
 import ExampleComponent from './components/ExampleComponent.vue';
 import ChatRoom from './components/ChatRoom.vue';
+import Library from './components/Library.vue';
 app.component('example-component', ExampleComponent);
 
 /**
@@ -36,5 +37,7 @@ app.component('example-component', ExampleComponent);
  * an "id" attribute of "app". This element is included with the "auth"
  * scaffolding. Otherwise, you will need to add an element yourself.
  */
+// createApp(Library).mount('#app');
+app.component('Library', Library);
 app.component('chat-room', ChatRoom);
 app.mount('#app');

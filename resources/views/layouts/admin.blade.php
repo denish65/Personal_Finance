@@ -26,6 +26,12 @@
 
     @vite(['resources/js/app.js', 'resources/css/app.css'])
 
+
+     <!-- Styles -->
+     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+     <!-- Scripts -->
+     <script src="{{ mix('js/app.js') }}" defer></script>
+
 </head>
 
 <body>
@@ -65,7 +71,7 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="{{ route('admin.log
                         <a href="{{ route("chat.room")}}"><i class="fa fa-qrcode fa-3x"></i> chat room</a>
                     </li>
                     <li>
-                        <a href="chart.html"><i class="fa fa-bar-chart-o fa-3x"></i> Morris Charts</a>
+                        <a href="{{ route('admin.library') }}"><i class="fa fa-bar-chart-o fa-3x"></i> library </a>
                     </li>
                     <li>
                         <a href="table.html"><i class="fa fa-table fa-3x"></i> Table Examples</a>
@@ -115,6 +121,7 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="{{ route('admin.log
         @yield('dashboard')
         @yield('Expense')
          @yield('chatroom')
+         @yield('library')
         <!-- /. NAV SIDE  -->
         {{-- <div id="page-wrapper">
             <div id="page-inner">
