@@ -59,9 +59,11 @@ Route::get('/admin/chatRoom', [ChatController::class, 'index'])->name("chat.room
 
 Route::get('/admin/library', [LibraryConttoller::class, 'index'])->name("admin.library"); // Fetch messages
 
+Route::post('/admin/library/add', [LibraryConttoller::class, 'store'])->name("admin.library.add"); // Fetch messages
 
-// Route::get('/admin/messages', [ChatController::class, 'fetchMessages']); // Fetch messages
-// Route::post('/admin/messages', [ChatController::class, 'sendMessage']); // Send a message
+
+
+
 
 
 

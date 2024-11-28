@@ -11,6 +11,6 @@ class LibraryModel extends Model
     // use HasFactory;
     protected $tabel ='library_tabel';
 
-    protected $fillable = ['title', 'author', 'file_path', 'is_hidden'];
+    protected $fillable = ['title', 'author', 'category','file_path', 'is_hidden'];
 
 }

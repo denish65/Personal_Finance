@@ -35,8 +35,8 @@ class LibraryConttoller extends Controller
          $filePath = $request->file('file')->store('books');
  
          $book = LibraryModel::create([
-            //  'title' => $request->title,
-            //  'author' => $request->author,
+             'title' => $request->title,
+             'author' => $request->author,
              'file_path' => $filePath,
          ]);
  
