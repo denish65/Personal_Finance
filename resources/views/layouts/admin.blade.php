@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
     {{-- @vite(['resources/js/app.js', 'resources/css/app.css']) --}}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 
 
@@ -159,7 +160,10 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="{{ route('admin.log
     <!-- /. WRAPPER  -->
     <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
     <!-- JQUERY SCRIPTS -->
-    <script src="{{ asset('asset/js/jquery-1.10.2.js') }}"></script>
+    {{-- <script src="{{ asset('asset/js/jquery-1.10.2.js') }}"></script> --}}
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <!-- BOOTSTRAP SCRIPTS -->
     <script src="{{ asset('asset/js/bootstrap.min.js') }}"></script>
     <!-- METISMENU SCRIPTS -->

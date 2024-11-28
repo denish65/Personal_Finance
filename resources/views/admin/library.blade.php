@@ -72,19 +72,21 @@
               </div>
               <div class="form-group">
                 <label for="recipient-name" class="col-form-label">category:</label>
-                <input type="date" name="category"  class="form-control" id="category">
+                <input type="text" name="category"  class="form-control" id="category">
+              </div>
+              <div class="form-group">
+                <label for="recipient-name" class="col-form-label">date:</label>
+                <input type="date" name="date"  class="form-control" id="date">
               </div>
               <div class="form-group">
                 <label for="recipient-name" class="col-form-label">book:</label>
                 <input type="file" name="book"  class="form-control" id="book">
               </div>
               <div class="form-group">
-                <label for="recipient-name" class="col-form-label">payment_type:</label>
-                <select type="text" name="payment_type"  class="form-control" id="payment_type">
-                <option value="cash">cash</option>
-                <option value="credit">credit</option>
-                <option value="debit">debit</option>
-                <option value="online">online</option>
+                <label for="recipient-name" class="col-form-label">is hidden:</label>
+                <select type="text" name="payment_type"  class="form-control" id="is_hidden">
+                <option value="1">yes</option>
+                <option value="0">no</option>
                 </select>
               </div>
           
@@ -95,7 +97,7 @@
       </div>
     </div>
 </div>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+{{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
 
 <script>
     $(document).ready(function () {
@@ -109,7 +111,7 @@
             var formData = new FormData($('#addBookForm')[0]);
 
             $.ajax({
-                url: "{{ route('admin.addexpense') }}", // Define the correct route for adding expenses
+                url: "{{ route('admin.library.add') }}", // Define the correct route for adding expenses
                 type: 'POST',
                 data: formData,
                 headers: {

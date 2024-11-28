@@ -32,11 +32,32 @@ class LibraryConttoller extends Controller
         //      'file' => 'required|file|mimes:pdf',
         //  ]);
  
-         $filePath = $request->file('file')->store('books');
+    //    echo "<PRE>"; print_r($request->all());exit();
+
+
+    //    [title] => scs
+    //    [author] => sd
+    //    [category] => sd
+    //    [date] => 2024-11-28
+    //    [payment_type] => 1
+
+
+        //  $filePath = $request->file('file')->store('books');
+
+        $filePath = null;
+         if ($request->hasFile('books')) {
+            $image = $request->file('books');
+            // $imagePath = $image->store('expenses', 'public'); // Store file in 'public/expenses' directory
+            $customFolder = 'images/Library'; 
+            $filePath = $image->storeAs($customFolder, 'books_' . time() . '.' . $image->getClientOriginalExtension(), 'public');
+    
+        }
  
          $book = LibraryModel::create([
              'title' => $request->title,
              'author' => $request->author,
+             'category' => $request->category,
+             'date' => $request->date,
              'file_path' => $filePath,
          ]);
  
