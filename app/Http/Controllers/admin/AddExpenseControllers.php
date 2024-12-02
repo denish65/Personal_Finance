@@ -87,10 +87,10 @@ class AddExpenseControllers extends Controller
     }
 
 
-    public function editExpense($id)
+    public function editExpense(Request $request,$id)
     {
         
-        $Expense =  ExpenseModel::where("id",$id);
+        $Expense =  ExpenseModel::where("id",$id)->first();
 
 
 
@@ -98,6 +98,35 @@ class AddExpenseControllers extends Controller
             'status' => 'success',
             'Expense' => $Expense,
             'message' => 'Expense added successfully!',
+        ], 200);
+    }
+
+
+
+    public function updateExpense(Request $request,$id)
+    {
+        
+        $Expense =  ExpenseModel::where("id",$id)->first();
+        $Expense->first_name = $request->first_name;
+        $Expense->last_name = $request->last_name;
+        $Expense->date = $request->date;
+        $Expense->payment_type = $request->payment_type;
+        // $Expense->reference_image = $request->reference_image;
+        $Expense->expense_note = $request->expense_note;
+        $Expense->location = $request->location;
+        $Expense->item_name = $request->item_name;
+        $Expense->payment_for = $request->payment_for;
+        $Expense->payment_status = $request->payment_status;
+        $Expense->save();
+
+
+        
+
+
+        return response()->json([
+            'status' => 'success',
+            'Expense' => $Expense,
+            'message' => 'Expense update successfully!',
         ], 200);
     }
 

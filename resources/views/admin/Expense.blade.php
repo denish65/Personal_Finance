@@ -289,46 +289,13 @@
             
         });
 
-        // Fetch expenses and populate the table
-        // function fetchExpenses() {
-        //     $.ajax({
-        //         url: "{{ route('admin.show') }}", // Route for fetching expenses
-        //         type: 'GET',
-        //         success: function (response) {
-        //             var tableBody = $('#expenseTable tbody');
-        //             tableBody.empty(); // Clear existing table data
-
-        //             if (response.status === 'success') {
-        //                 response.Expense.forEach(function (expense) {
-        //                     var row = '<tr>';
-        //                     row += '<td>' + expense.id + '</td>';
-        //                     row += '<td>' + expense.first_name + '</td>';
-        //                     row += '<td>' + expense.last_name + '</td>';
-        //                     row += '<td>' + expense.date + '</td>';
-        //                     row += '<td>' + expense.payment_type + '</td>';
-        //                     row += '<td>' + expense.expense_note + '</td>';
-        //                     row += '<td>' + expense.location + '</td>';
-        //                     row += '<td>' + expense.item_name + '</td>';
-        //                     row += '<td>' + expense.payment_for + '</td>';
-        //                     row += '<td>' + expense.payment_status + '</td>';
-        //                     row += '<td><img src="{{ asset('storage/') }}' + '/' + expense.reference_image + '" alt="Expense Image" style="width: 50px;"></td>';
-        //                     row += '<td><i class="bi bi-pencil-square text-success" id="editexpense" data-id='+ expense.id+' ></i> | <i class="bi bi-trash text-danger" id="deleteexpense" data-id='+ expense.id+'></i></td>';
-        //                     row += '</tr>';
-        //                     tableBody.append(row);
-        //                 });
-        //             }
-        //         },
-        //         error: function (xhr, status, error) {
-        //             alert('An error occurred: ' + xhr.responseText);
-        //         }
-        //     });
-        // }
+        
     });
 
 
     function fetchExpenses() {
             $.ajax({
-                url: "{{ route('admin.show') }}", // Route for fetching expenses
+                url: "{{ route('admin.expense.show') }}", // Route for fetching expenses
                 type: 'GET',
                 success: function (response) {
                     var tableBody = $('#expenseTable tbody');

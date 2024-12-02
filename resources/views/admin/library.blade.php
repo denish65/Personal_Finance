@@ -28,9 +28,11 @@
                                     <th>title</th>
                                     <th>author</th>
                                     <th>category</th>
+                                    <th>date</th>
+
                                     <th>file_path</th>
-                                    <th>is_hidden</th>
-                                    <th>Location</th>
+                                    {{-- <th>is_hidden</th> --}}
+                                    <th>Read</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -60,7 +62,7 @@
           </button>
         </div>
         <div class="modal-body">
-          <form id="addBookForm">
+          <form id="addBookForm" method="POST" enctype="multipart/form-data">
             
             <div class="form-group">
               <label for="recipient-name" class="col-form-label">title:</label>
@@ -80,7 +82,7 @@
               </div>
               <div class="form-group">
                 <label for="recipient-name" class="col-form-label">book:</label>
-                <input type="file" name="book"  class="form-control" id="book">
+                <input type="file" name="book"  class="form-control" id="book" accept="application/*" >
               </div>
               <div class="form-group">
                 <label for="recipient-name" class="col-form-label">is hidden:</label>
@@ -102,12 +104,15 @@
 <script>
     $(document).ready(function () {
         // Fetch expenses on page load
+   
+
         // fetchExpenses();
+        fetchLibrary(); 
 
         // When the "Send message" button is clicked
         $('#addBookButton').on('click', function (e) {
             e.preventDefault(); // Prevent the default form submission
-
+            // console.log("Add Book button clicked!");
             var formData = new FormData($('#addBookForm')[0]);
 
             $.ajax({
@@ -121,9 +126,11 @@
                 processData: false, // Don't process the data (files)
                 success: function (response) {
                     console.log(response);
-                    $('#libraryModal').modal('hide'); // Close the modal
+                    $('#exampleModal').modal('hide'); // Close the modal
                     $('#addBookForm')[0].reset(); // Reset the form
                     // fetchExpenses(); // Refresh the table after adding a new expense
+                    fetchLibrary(); 
+
                 },
                 error: function (xhr, status, error) {
                     alert('An error occurred: ' + xhr.responseText);
@@ -133,6 +140,40 @@
             
         });
     });
+
+
+    function fetchLibrary() {
+            $.ajax({
+                url: "{{ route('admin.library.show') }}", // Route for fetching expenses
+                type: 'GET',
+                success: function (response) {
+                    var tableBody = $('#libraryTable tbody');
+                    tableBody.empty(); // Clear existing table data
+
+                    console.log(response.Library);
+                    if (response.status === 'success') {
+                        response.Library.forEach(function (Library) {
+                            var row = '<tr>';
+                            row += '<td>' + Library.id + '</td>';
+                            row += '<td>' + Library.title + '</td>';
+                            row += '<td>' + Library.author + '</td>';
+                            row += '<td>' + Library.category + '</td>';
+                            row += '<td>' + Library.date + '</td>';
+                            // row += '<td>' + Library.expense_note + '</td>';
+                            row += '<td>' + Library.file_path + '</td>';
+                            row += '<td> <img src="{{ asset('storage/') }}' + '/' + Library.file_path + '" alt="Expense Image" style="width: 50px;"></td>';
+                            row += '<td> <a href="{{ asset('storage/') }}' + '/' + Library.file_path + '" alt="Library book" style="width: 50px;" target="_blank"> read</a></td>';
+                            row += '<td><i class="bi bi-pencil-square text-success" id="editexpense" data-id='+ Library.id+' ></i> | <i class="bi bi-trash text-danger" id="deleteexpense" data-id='+ Library.id+'></i></td>';
+                            row += '</tr>';
+                            tableBody.append(row);
+                        });
+                    }
+                },
+                error: function (xhr, status, error) {
+                    alert('An error occurred: ' + xhr.responseText);
+                }
+            });
+        }
 
 </script>
 

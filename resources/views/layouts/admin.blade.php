@@ -162,7 +162,7 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="{{ route('admin.log
     <!-- JQUERY SCRIPTS -->
     {{-- <script src="{{ asset('asset/js/jquery-1.10.2.js') }}"></script> --}}
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+{{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
 
     <!-- BOOTSTRAP SCRIPTS -->
     <script src="{{ asset('asset/js/bootstrap.min.js') }}"></script>
